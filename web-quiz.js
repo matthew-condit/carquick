@@ -37,7 +37,7 @@ const logo = ["../fotos/Chevrolet-logo.jpg", '../fotos/infiniti-logo.jpg', '../f
 
 
 //function to track the current question and increase the score if the correct answer is selected
-function increaseScore(){
+function increaseNumber(){
     STORE.currentQuestion++
 }
 
@@ -113,7 +113,7 @@ function retryQuiz(){
 }
 
 function thingyTest(){
-    increaseScore();
+    increaseNumber();
     beginTheLogoQuiz();
     answer();
     theNextButton();
