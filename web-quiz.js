@@ -39,6 +39,7 @@ const logo = ["../fotos/Chevrolet-logo.jpg", '../fotos/infiniti-logo.jpg', '../f
 //function to track the current question and increase the score if the correct answer is selected
 function increaseNumber(){
     STORE.currentQuestion++
+
 }
 
 
@@ -64,10 +65,10 @@ function answerPrompt(){
     )
     $(".question_options").append(
         `<div>
-        <input type=radio>${STORE.questions[STORE.currentQuestion].options[0]}</input>
-        <input type=radio>${STORE.questions[STORE.currentQuestion].options[1]}</input>
-        <input type=radio>${STORE.questions[STORE.currentQuestion].options[2]}</input>
-        <input type=radio>${STORE.questions[STORE.currentQuestion].options[3]}</input>
+        <button id="answer_option">${STORE.questions[STORE.currentQuestion].options[0]}</button>
+        <button id="answer_option">${STORE.questions[STORE.currentQuestion].options[1]}</button>
+        <button id="answer_option">${STORE.questions[STORE.currentQuestion].options[2]}</button>
+        <button id="answer_option">${STORE.questions[STORE.currentQuestion].options[3]}</button>
         <div>`
     )
 }
@@ -76,20 +77,11 @@ function answerPrompt(){
 function answer(){
     /* when this button is hit, the answer is highlighted in a green border, and the next button appears
     to go on to the next question. The score and question number will both update by 1 */
-    console.log("`Answer` has executed")
-    if ($(".button").val() === STORE.questions[STORE.currentQuestion].answer){
-        $(this).append(
-            `<div>
-            <p>very good! you got the right answer!</p>
-            </div`
-        )
-    } else {
-        `<div>
-            <p>oh no! you were wrong! the correct answer was ${STORE.questions[STORE.currentQuestion].answer.val()}</p>
-        </div`
-    }
+    $(".question_options").find("button").click(function(event){
+        alert("plz plz plz work");
+    })
+    
 }
-
 function theNextButton(){
     /* when this button is hit, the next question will appear. Specifically, the title will stay the same, but the 
     logo as well as the four possible questions will update. The "next" button will dissapear again until the next
@@ -113,9 +105,7 @@ function retryQuiz(){
 }
 
 function thingyTest(){
-    increaseNumber();
     beginTheLogoQuiz();
-    answer();
     theNextButton();
     showMyResults();
     retryQuiz();
