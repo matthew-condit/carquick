@@ -7,3 +7,13 @@ img{
     margin-bottom: 50px;
     margin-top: 50px;
 }
+
+.appear{
+    display: initial;
+}
+.logo_question{
+    display: none;
+}
+.qusetion_options{
+    display: none;
+}

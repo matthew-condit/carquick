@@ -13,157 +13,21 @@
         <h3>By Chris Aragon</h3>
         <p>Think you can identify these 12 car logos? Good luck.
         </p>
+        <button class="start_button">Start Your Engines</button>
     </header>
-<main>
-    <button class="start_button">Start Your Engines</button>
-</main>
-<form>
-    <div class="question_one">
-            <h2>Which logo is this?</h2>
-        <div>
-            <img src="../fotos/Chevrolet-logo.jpg" alt="mystery logo #1">
+    <form class="quiz">
+        <div class="question_one">
+                <section class="question_counter"></section>
+                <section class="score_counter"></section>
+                <h2 class="logo_question">Which logo is this?</h2>
+            <div class="image_and_options">
+                <section class="image"></section>
+                <section class="question_options"></section>
+            </div>
         </div>
-        <button type="submit">Ford</button>
-        <button type="submit">General Motors</button>
-        <button type="submit">Chevrolet</button>
-        <button type="submit">Cadillac</button>
-    </div>
-    <div class="question_two">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img class="photo infiniti" src="../fotos/infiniti-logo.jpg" alt="mystery logo #2">
-            </div>
-            <button type="submit">Lexus</button>
-            <button type="submit">Infiniti</button>
-            <button type="submit">Honda</button>
-            <button type="submit">Mitsubishi</button>
-    </div>
-    <div class="question_three">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img src="../fotos/Ferrari-Logo.jpg" alt="mystery logo #3">
-            </div>
-            <button type="submit">Ferrari</button>
-            <button type="submit">Porche</button>
-            <button type="submit">Lamborghini</button>
-            <button type="submit">Jaguar</button>
-    </div>
-    <div class="question_four">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img src="../fotos/Lexus-Logo.jpg" alt="mystery logo #4">
-            </div>
-            <button type="submit">Lincoln</button>
-            <button type="submit">Lotus</button>
-            <button type="submit">Lexus</button>
-            <button type="submit">Subaru</button>
-    </div>
-    <div class="question_five">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img src="../fotos/marcedes-benz-logo.jpg" alt="mystery logo #5">
-            </div>
-            <button type="submit">BMW</button>
-            <button type="submit">Nissan</button>
-            <button type="submit">Audi</button>
-            <button type="submit">Marcedes-Benz</button>
-    </div>
-    <div class="question_six">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img src="../fotos/toyota.jpg" alt="mystery logo #6">
-            </div>
-            <button type="submit">Mazda</button>
-            <button type="submit">Toyota</button>
-            <button type="submit">Ford</button>
-            <button type="submit">General Motors</button>
-    </div>
-    <div class="question_seven">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img src="../fotos/volkswagen.logo.jpg" alt="mystery logo #7">
-            </div>
-            <button type="submit">BMW</button>
-            <button type="submit">Rolls Royce</button>
-            <button type="submit">Volkswagen</button>
-            <button type="submit">Bently</button>
-    </div>
-    <div class="question_eight">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img src="../fotos/cadillac-logo.jpg" alt="mystery logo #8">
-            <h2>Which logo is this?</h2>
-            <button type="submit">Cadillac</button>
-            <button type="submit">Hummer</button>
-            <button type="submit">Jeep</button>
-            <button type="submit">Buick</button>
-    </div>
-    <div class="question_nine">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img src="../fotos/audi-logo.jpg" alt="mystery logo #9">
-            </div>
-            <button type="submit">Bently</button>
-            <button type="submit">Acura</button>
-            <button type="submit">Audi</button>
-            <button type="submit">Mazda</button>
-    </div>
-    <div class="question_ten">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img src="../fotos/subaru-logo.jpg" alt="mystery logo #10">
-            </div>
-            <button type="submit">Mini Cooper</button>
-            <button type="submit">Subaru</button>
-            <button type="submit">Ford</button>
-            <button type="submit">Chrysler</button>
-    </div>
-    <div class="question_eleven">
-        <h2>Which logo is this?</h2>    
-        <div>
-            <img src="../fotos/tesla-logo.jpg" alt="mystery logo #11">
-        </div>
-            <button type="submit">Saturn</button>
-            <button type="submit">Fiat</button>
-            <button type="submit">Tatra</button>
-            <button type="submit">Tesla</button>
-    </div>
-    <div class="question_twelve">
-            <h2>Which logo is this?</h2>
-            <div>
-                <img src="../fotos/maserati-logo.jpg" alt="mystery logo #12">
-            </div>
-            <button type="submit">Maserati</button>
-            <button type="submit">Saturn</button>
-            <button type="submit">Lambougini</button>
-            <button type="submit">Mercury</button>
-    </div>
-</form>
-
-<!--if your score is between 0 and 3-->
-<div class="poor-score">
-    <img src="../fotos/bad-parking-job.jpg" alt="bad parking job">
-    <p>Pity, seems like you as much about cars as this driver knows about parking</p>
-    <button>Retry Quiz?</button>
-</div>
-<!--if your score is between 4-7-->
-<div>
-    <img src="../fotos/old-minivan.jpg" alt="an old minivan">
-    <p>Wow, that was...passable (like this stylish minivan),
-         but you could still stand to learn more about car logos</p>
-         <button>Retry Quiz?</button>
-</div>
-<!--if your score is between 7-10-->
-<div>
-    <img src="../fotos/not-too-shabby-car.jpg" alt="pretty good car">
-    <p>Hey, that was pretty good! Not perfect, but...ya know, fine</p>
-    <button>Retry Quiz?</button>
-</div>
-<!--if your score is between 11 or 12--->
-<div>
-    <img src="../fotos/sportscar.jpg" alt="winner winner chicken dinner">
-    <p>THAT WAS INCREDIBLE! YOU REALLY KNOW YOUR CARS! #YaaassQueen #NoNotes</p>
-    <button>Retry Quiz?</button>
-</div>
+    </form>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="web-quiz.js"></script>
 </body>
 </html>
