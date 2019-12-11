@@ -53,6 +53,9 @@ function beginTheLogoQuiz(){
         $("header").remove();
         $(".logo_question").toggle();
         $(".image_and_options").prepend(answerPrompt())
+        $(".question_counter").append(
+            STORE.currentQuestion + 1 + " / 12"
+        )
     })
     console.log("`beginTheLogoQuiz` has executed")
 
@@ -65,22 +68,24 @@ function answerPrompt(){
     )
     $(".question_options").append(
         `<div>
-        <button id="answer_option">${STORE.questions[STORE.currentQuestion].options[0]}</button>
-        <button id="answer_option">${STORE.questions[STORE.currentQuestion].options[1]}</button>
-        <button id="answer_option">${STORE.questions[STORE.currentQuestion].options[2]}</button>
-        <button id="answer_option">${STORE.questions[STORE.currentQuestion].options[3]}</button>
-        <div>`
-    )
+        <input type=radio id="button_option" name=test1 required>${STORE.questions[STORE.currentQuestion].options[0]}<br>
+        <input type=radio id="button_option" name=test1 required>${STORE.questions[STORE.currentQuestion].options[1]}<br>
+        <input type=radio id="button_option" name=test1 required>${STORE.questions[STORE.currentQuestion].options[2]}<br>
+        <input type=radio id="button_option" name=test1 required>${STORE.questions[STORE.currentQuestion].options[3]}
+        <div>
+        <div>
+            <button>Submit!</button>
+        </div>`
+    )  
 }
 
 
-function answer(){
+function submitAnswer(){
     /* when this button is hit, the answer is highlighted in a green border, and the next button appears
     to go on to the next question. The score and question number will both update by 1 */
     $(".question_options").find("button").click(function(event){
-        alert("plz plz plz work");
+        alert("hello, Dave");
     })
-    
 }
 function theNextButton(){
     /* when this button is hit, the next question will appear. Specifically, the title will stay the same, but the 
