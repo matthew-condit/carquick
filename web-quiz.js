@@ -39,7 +39,6 @@ const logo = ["../fotos/Chevrolet-logo.jpg", '../fotos/infiniti-logo.jpg', '../f
 //function to track the current question and increase the score if the correct answer is selected
 function increaseNumber(){
     STORE.currentQuestion++
-
 }
 
 
@@ -53,8 +52,11 @@ function beginTheLogoQuiz(){
         $("header").remove();
         $(".logo_question").toggle();
         $(".image_and_options").prepend(answerPrompt())
-        $(".question_counter").append(
+        $(".question_counter").prepend(
             STORE.currentQuestion + 1 + " / 12"
+        )
+        $(".question_counter").append(
+            " " + STORE.totalScore + " / 12"
         )
     })
     console.log("`beginTheLogoQuiz` has executed")
@@ -62,36 +64,41 @@ function beginTheLogoQuiz(){
 }
 function answerPrompt(){
     $(".image").append(
-        `<div>
-        <img src="${logo[STORE.currentQuestion]}">
-        </div`
+        `<img src="${logo[STORE.currentQuestion]}">`
     )
     $(".question_options").append(
         `<div>
-        <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[0]}<br>
-        <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[1]}<br>
-        <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[2]}<br>
-        <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[3]}<br>
-        <div>
+            <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[0]}">${STORE.questions[STORE.currentQuestion].options[0]}<br>
+            <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[1]}<br>
+            <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[2]}">${STORE.questions[STORE.currentQuestion].options[2]}<br>
+            <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[3]}">${STORE.questions[STORE.currentQuestion].options[3]}<br>
+        </div>
         <div>
             <button class="submit_answer">Submit!</button>
         </div>`
     ); 
-    $(".submit_answer").submit(submitAnswer())
-    //event.preventDefault()
+    $(".submit_answer").submit(submitAnswer(), event.preventDefault())
 }
-
-
 function submitAnswer(){
     /* when this button is hit, the answer is highlighted in a green border, and the next button appears
     to go on to the next question. The score and question number will both update by 1  */
     $(".submit_answer").click(function(event){
         event.preventDefault();
             if (($("input[name='test1']:checked").val()) === STORE.questions[STORE.currentQuestion].answer) {
-                alert("hello, Dave")
-            }
+                $(".question_options").append(
+                    `<div>
+                        <p>That's right! Good Job!</p>
+                    </div>`
+                )
+            } else if (!$("input[name='test1']:checked").val()) {
+                alert('Please choose an option')
+             }
             else {
-                alert(("testing wrong answer"))
+                $(".question_options").append(
+                `<div>
+                    <p>WRONG! This is the ${STORE.questions[STORE.currentQuestion].answer} logo</p>
+                </div>`
+                )
             }
     })
 }
@@ -126,3 +133,7 @@ function thingyTest(){
     submitAnswer();
 }
 $(thingyTest);
+
+
+
+
