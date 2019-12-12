@@ -77,13 +77,14 @@ function answerPrompt(){
             <button class="submit_answer">Submit!</button>
         </div>`
     ); 
-    //$(".submit_answer").submit(submitAnswer())
+    $(".submit_answer").submit(submitAnswer())
 }
 
 
 function submitAnswer(){
     /* when this button is hit, the answer is highlighted in a green border, and the next button appears
     to go on to the next question. The score and question number will both update by 1  */
+    //let selected_answer = $("#button_option").event.currentTarget()
     $(".submit_answer").click(function(event){
         event.preventDefault()
             if ($("#button_option") === STORE.questions[STORE.currentQuestion].answer) {
