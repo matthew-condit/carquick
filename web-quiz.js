@@ -68,26 +68,26 @@ function answerPrompt(){
     )
     $(".question_options").append(
         `<div>
-        <input type=radio id="button_option" name=test1 required>${STORE.questions[STORE.currentQuestion].options[0]}<br>
-        <input type=radio id="button_option" name=test1 required>${STORE.questions[STORE.currentQuestion].options[1]}<br>
-        <input type=radio id="button_option" name=test1 required>${STORE.questions[STORE.currentQuestion].options[2]}<br>
-        <input type=radio id="button_option" name=test1 required>${STORE.questions[STORE.currentQuestion].options[3]}
+        <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[0]}<br>
+        <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[1]}<br>
+        <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[2]}<br>
+        <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[3]}<br>
         <div>
         <div>
             <button class="submit_answer">Submit!</button>
         </div>`
     ); 
     $(".submit_answer").submit(submitAnswer())
+    //event.preventDefault()
 }
 
 
 function submitAnswer(){
     /* when this button is hit, the answer is highlighted in a green border, and the next button appears
     to go on to the next question. The score and question number will both update by 1  */
-    //let selected_answer = $("#button_option").event.currentTarget()
     $(".submit_answer").click(function(event){
-        event.preventDefault()
-            if ($("#button_option") === STORE.questions[STORE.currentQuestion].answer) {
+        event.preventDefault();
+            if (($("input[name='test1']:checked").val()) === STORE.questions[STORE.currentQuestion].answer) {
                 alert("hello, Dave")
             }
             else {
