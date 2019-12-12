@@ -74,19 +74,27 @@ function answerPrompt(){
         <input type=radio id="button_option" name=test1 required>${STORE.questions[STORE.currentQuestion].options[3]}
         <div>
         <div>
-            <button>Submit!</button>
+            <button class="submit_answer">Submit!</button>
         </div>`
-    )  
+    ); 
+    //$(".submit_answer").submit(submitAnswer())
 }
 
 
 function submitAnswer(){
     /* when this button is hit, the answer is highlighted in a green border, and the next button appears
-    to go on to the next question. The score and question number will both update by 1 */
-    $(".question_options").find("button").click(function(event){
-        alert("hello, Dave");
+    to go on to the next question. The score and question number will both update by 1  */
+    $(".submit_answer").click(function(event){
+        event.preventDefault()
+            if ($("#button_option") === STORE.questions[STORE.currentQuestion].answer) {
+                alert("hello, Dave")
+            }
+            else {
+                alert(("testing wrong answer"))
+            }
     })
 }
+
 function theNextButton(){
     /* when this button is hit, the next question will appear. Specifically, the title will stay the same, but the 
     logo as well as the four possible questions will update. The "next" button will dissapear again until the next
@@ -114,5 +122,6 @@ function thingyTest(){
     theNextButton();
     showMyResults();
     retryQuiz();
+    submitAnswer();
 }
 $(thingyTest);
