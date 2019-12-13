@@ -91,7 +91,7 @@ function submitAnswer(){
                         <p>That's right! Good Job!</p>
                     </div>`
                 ), increaseScore();
-                
+                $(".score_counter").replaceWith(STORE.totalScore + " / 12")
             } else if (!$("input[name='test1']:checked").val()) {
                 alert('Please choose an option')
              }
