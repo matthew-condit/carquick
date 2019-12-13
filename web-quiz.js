@@ -41,6 +41,9 @@ function increaseNumber(){
     STORE.currentQuestion++
 }
 
+function increaseScore(){
+    STORE.totalScore++
+}
 
 
 function beginTheLogoQuiz(){
@@ -52,12 +55,8 @@ function beginTheLogoQuiz(){
         $("header").remove();
         $(".logo_question").toggle();
         $(".image_and_options").prepend(answerPrompt())
-        $(".question_counter").prepend(
-            STORE.currentQuestion + 1 + " / 12"
-        )
-        $(".question_counter").append(
-            " " + STORE.totalScore + " / 12"
-        )
+        $(".question_counter").prepend(STORE.currentQuestion + 1 + " / 12")
+        $(".score_counter").append(STORE.totalScore + " / 12")
     })
     console.log("`beginTheLogoQuiz` has executed")
 
@@ -77,7 +76,9 @@ function answerPrompt(){
             <button class="submit_answer">Submit!</button>
         </div>`
     ); 
-    $(".submit_answer").submit(submitAnswer(), event.preventDefault())
+    $(".submit_answer").submit(submitAnswer(), event.preventDefault());
+    $(".submit_answer").click(theNextButton());
+    
 }
 function submitAnswer(){
     /* when this button is hit, the answer is highlighted in a green border, and the next button appears
@@ -85,16 +86,17 @@ function submitAnswer(){
     $(".submit_answer").click(function(event){
         event.preventDefault();
             if (($("input[name='test1']:checked").val()) === STORE.questions[STORE.currentQuestion].answer) {
-                $(".question_options").append(
+                $(".question_options").prepend(
                     `<div>
                         <p>That's right! Good Job!</p>
                     </div>`
-                )
+                ), increaseScore();
+                
             } else if (!$("input[name='test1']:checked").val()) {
                 alert('Please choose an option')
              }
             else {
-                $(".question_options").append(
+                $(".question_options").prepend(
                 `<div>
                     <p>WRONG! This is the ${STORE.questions[STORE.currentQuestion].answer} logo</p>
                 </div>`
@@ -108,7 +110,7 @@ function theNextButton(){
     logo as well as the four possible questions will update. The "next" button will dissapear again until the next
     answer is selected */
     console.log("`theNextButton` has executed")
-
+    $(".submit_button").replaceWith("<button>Next Question!</button>")
 }
 
 function showMyResults(){
