@@ -61,6 +61,7 @@ function beginTheLogoQuiz(){
     console.log("`beginTheLogoQuiz` has executed")
 
 }
+
 function answerPrompt(){
     $(".image").append(
         `<img src="${logo[STORE.currentQuestion]}">`
@@ -76,9 +77,7 @@ function answerPrompt(){
             <button class="submit_answer">Submit!</button>
         </div>`
     ); 
-    $(".submit_answer").submit(submitAnswer(), event.preventDefault());
-    $(".submit_answer").click(theNextButton());
-    
+    $(".submit_answer").submit(submitAnswer())
 }
 function submitAnswer(){
     /* when this button is hit, the answer is highlighted in a green border, and the next button appears
@@ -110,7 +109,9 @@ function theNextButton(){
     logo as well as the four possible questions will update. The "next" button will dissapear again until the next
     answer is selected */
     console.log("`theNextButton` has executed")
-    $(".submit_button").replaceWith("<button>Next Question!</button>")
+    $(".submit_button").click(function(event){
+        $(this).replaceWith(`<button id="next_quesiton_button">Next Question!</button>`)
+    })
 }
 
 function showMyResults(){
