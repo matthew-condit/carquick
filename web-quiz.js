@@ -31,7 +31,7 @@ const STORE = {
 }
 
 const logo = ["../fotos/Chevrolet-logo.jpg", '../fotos/infiniti-logo.jpg', '../fotos/Ferrari-Logo.jpg',
-'../fotos/Lexus-Logo.jpg', '../fotos/toyota.jpg', '../fotos/volkswagen.logo.jpg', '../fotos/cadillac-logo.jpg',
+'../fotos/Lexus-Logo.jpg','../fotos/marcedes-benz-logo.jpg', '../fotos/toyota.jpg', '../fotos/volkswagen.logo.jpg', '../fotos/cadillac-logo.jpg',
 '../fotos/audi-logo.jpg', '../fotos/subaru-logo.jpg', '../fotos/tesla-logo.jpg', '../fotos/maserati-logo.jpg']
 
 
@@ -59,15 +59,14 @@ function beginTheLogoQuiz(){
         $(".score_counter").append(STORE.totalScore + " / 12")
     })
     console.log("`beginTheLogoQuiz` has executed")
-
 }
 
 function answerPrompt(){
     $(".image").append(
-        `<img src="${logo[STORE.currentQuestion]}">`
+        `<img class="current_logo" src="${logo[STORE.currentQuestion]}">`
     )
     $(".question_options").append(
-        `<div>
+        `<div class="button_container">
             <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[0]}">${STORE.questions[STORE.currentQuestion].options[0]}<br>
             <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[1]}<br>
             <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[2]}">${STORE.questions[STORE.currentQuestion].options[2]}<br>
@@ -77,7 +76,7 @@ function answerPrompt(){
             <button class="submit_answer">Submit!</button>
         </div>`
     ); 
-    $(".submit_answer").submit(submitAnswer())
+    $(".submit_answer").submit(submitAnswer(), event.preventDefault())
 }
 function submitAnswer(){
     /* when this button is hit, the answer is highlighted in a green border, and the next button appears
@@ -86,20 +85,21 @@ function submitAnswer(){
         event.preventDefault();
             if (($("input[name='test1']:checked").val()) === STORE.questions[STORE.currentQuestion].answer) {
                 $(".question_options").prepend(
-                    `<div>
+                    `<div id="given_answer">
                         <p>That's right! Good Job!</p>
                     </div>`
                 ), increaseScore();
+                theNextButton();
                 $(".score_counter").replaceWith(STORE.totalScore + " / 12")
             } else if (!$("input[name='test1']:checked").val()) {
                 alert('Please choose an option')
              }
             else {
                 $(".question_options").prepend(
-                `<div>
+                `<div id="given_answer">
                     <p>WRONG! This is the ${STORE.questions[STORE.currentQuestion].answer} logo</p>
                 </div>`
-                )
+                ), theNextButton();
             }
     })
 }
@@ -109,9 +109,19 @@ function theNextButton(){
     logo as well as the four possible questions will update. The "next" button will dissapear again until the next
     answer is selected */
     console.log("`theNextButton` has executed")
-    $(".submit_button").click(function(event){
-        $(this).replaceWith(`<button id="next_quesiton_button">Next Question!</button>`)
-    })
+    $(".submit_answer").replaceWith(`<button class="next_question">Next Question!</button>`)
+    loadNextQuestion();
+}
+
+function loadNextQuestion(){
+    $(".next_question").click(function(event){
+        $("img").remove();
+        $(".button_container").remove();
+        $("#given_answer").remove();
+        $(this).remove();
+        increaseNumber();
+        answerPrompt();
+      })
 }
 
 function showMyResults(){
