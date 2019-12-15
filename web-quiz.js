@@ -55,8 +55,8 @@ function beginTheLogoQuiz(){
         $("header").remove();
         $(".logo_question").toggle();
         $(".image_and_options").prepend(answerPrompt())
-        $(".question_counter").prepend(STORE.currentQuestion + 1 + " / 12")
-        $(".score_counter").append(STORE.totalScore + " / 12")
+        $(".question_counter").html(STORE.currentQuestion + 1 + " / 12")
+        $(".score_counter").html(STORE.totalScore + " / 12")
     })
     console.log("`beginTheLogoQuiz` has executed")
 }
@@ -90,7 +90,7 @@ function submitAnswer(){
                     </div>`
                 ), increaseScore();
                 theNextButton();
-                $(".score_counter").replaceWith(STORE.totalScore + " / 12")
+                $(".score_counter").html(STORE.totalScore + " / 12")
             } else if (!$("input[name='test1']:checked").val()) {
                 alert('Please choose an option')
              }
@@ -130,6 +130,7 @@ function showMyResults(){
     minivan. A score of between 7-10 will show a nice gray car. A score of either 11 or 12 will show the 
     red sports car. There will also appear a personalized message as well as a button to restart the quiz*/
     console.log("`showMyResults` has executed")
+    
 }
 
 function retryQuiz(){
