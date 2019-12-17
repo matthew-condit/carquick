@@ -136,10 +136,10 @@ function showMyResults(){
     minivan. A score of between 8-11 will show a nice gray car. A score of 12 will show the 
     red sports car. There will also appear a personalized message as well as a button to restart the quiz*/
     $(".final_question").click(function(event){
-        $(".image_and_options").remove()
+        $(".image_and_options").hide();
         $(".logo_question").replaceWith(
             `<h2>You got ${STORE.totalScore} / ${STORE.questions.length} car logos!`)
-        if (STORE.totalScore = 12){
+        if (STORE.totalScore = STORE.questions.length){
             $(".results").append(
                 `<div>
                     <img src="../fotos/yellow-sports-car.jpg">
@@ -196,12 +196,12 @@ function retryQuiz(){
         //alert("peter these are parachuetes")
         STORE.currentQuestion = 0
         STORE.totalScore = 0
-        $(".question_counter").remove()
-        $(".score_counter").remove();
-        $(".results").remove();
+        $(".results").hide();
         $(".question_counter").html(STORE.currentQuestion + 1 + " / " + STORE.questions.length)
         $(".score_counter").html(STORE.totalScore + " / " + STORE.questions.length)
+        $(".logo_question").replaceWith(`<h2>Which logo is this?</h2>`)
         $(".image_and_options").prepend(answerPrompt())
+
     })
 }
 
