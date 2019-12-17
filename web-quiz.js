@@ -139,7 +139,7 @@ function showMyResults(){
         $(".image_and_options").remove()
         $(".logo_question").replaceWith(
             `<h2>You got ${STORE.totalScore} / ${STORE.questions.length} car logos!`)
-        if (STORE.totalScore >= 11){
+        if (STORE.totalScore = 12){
             $(".results").append(
                 `<div>
                     <img src="../fotos/yellow-sports-car.jpg">
@@ -184,6 +184,7 @@ function showMyResults(){
                 <button class="reset">Click to take another lap!</button>`
             )
         }
+        retryQuiz();
  })
 }
 
@@ -192,13 +193,15 @@ function retryQuiz(){
     restart the score at zero. It will allow the user to flip through the quiz all over again */
     console.log("`retryQuiz` has executed")
     $(".reset").click(function(event){
-        alert("peter these are parachusetes")
-        /*STORE.currentQuestion = 0
+        //alert("peter these are parachuetes")
+        STORE.currentQuestion = 0
         STORE.totalScore = 0
+        $(".question_counter").remove()
+        $(".score_counter").remove();
+        $(".results").remove();
         $(".question_counter").html(STORE.currentQuestion + 1 + " / " + STORE.questions.length)
         $(".score_counter").html(STORE.totalScore + " / " + STORE.questions.length)
-        $(".results").remove()
-        $(".image_and_options").prepend(answerPrompt()) */
+        $(".image_and_options").prepend(answerPrompt())
     })
 }
 
