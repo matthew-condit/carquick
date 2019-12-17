@@ -139,7 +139,7 @@ function showMyResults(){
         $(".image_and_options").hide();
         $(".logo_question").replaceWith(
             `<h2>You got ${STORE.totalScore} / ${STORE.questions.length} car logos!`)
-        if (STORE.totalScore = STORE.questions.length){
+        if (STORE.totalScore == STORE.questions.length){
             $(".results").append(
                 `<div>
                     <img src="../fotos/yellow-sports-car.jpg">
@@ -205,14 +205,14 @@ function retryQuiz(){
     })
 }
 
+
+
 function thingyTest(){
     beginTheLogoQuiz();
     theNextButton();
-    retryQuiz();
+    //retryQuiz();
     submitAnswer();
 }
 $(thingyTest);
-
-
 
 
