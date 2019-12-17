@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="Web-Quiz.css">
 </head>
 <body>
-    <header>
+    <header class='intro-screen'>
         <h1 class="title">How Well Do You Know Car Logos?</h1>
         <h3>By Chris Aragon</h3>
         <p>Think you can identify these 12 car logos? Good luck.
@@ -23,10 +23,20 @@
             <div class="image_and_options">
                 <section class="image"></section>
                 <section class="question_options"></section>
+                <section class="woo-prompt">WOO!</section>
+                <section class="woo-prompt">BOO!</section>
+                <button type="button" class="submit-guess-button">Next Question</button>
+                <button type="button" class="next-question-button">See Results</button>
             </div>
         </div>
     </form>
-    <section class="results"></section>
+    <section class="results">
+        <section class="best">Happy Result</section>
+        <section class="good">Good Result</section>
+        <section class="Fair">Fair Result</section>
+        <section class="bad">Bad Result</section>
+        <button type="button" class="retry-button">Retry</button>
+    </section>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="web-quiz.js"></script>

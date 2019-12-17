@@ -26,13 +26,24 @@ const STORE = {
     //question 12
     {options: ['Maserati', 'Saturn', 'Lambougini', 'Mercury'], answer: 'Maserati'}
     ],
-    currentQuestion: 0,
+    currentQuestion: 11,
     totalScore: 0
 }
 
-const logo = ["../fotos/Chevrolet-logo.jpg", '../fotos/infiniti-logo.jpg', '../fotos/Ferrari-Logo.jpg',
-'../fotos/Lexus-Logo.jpg','../fotos/marcedes-benz-logo.jpg', '../fotos/toyota.jpg', '../fotos/volkswagen.logo.jpg', '../fotos/cadillac-logo.jpg',
-'../fotos/audi-logo.jpg', '../fotos/subaru-logo.jpg', '../fotos/tesla-logo.jpg', '../fotos/maserati-logo.jpg']
+const logo = [
+    '../fotos/Chevrolet-logo.jpg',
+    '../fotos/infiniti-logo.jpg',
+    '../fotos/Ferrari-Logo.jpg',
+    '../fotos/Lexus-Logo.jpg',
+    '../fotos/marcedes-benz-logo.jpg',
+    '../fotos/toyota.jpg',
+    '../fotos/volkswagen.logo.jpg',
+    '../fotos/cadillac-logo.jpg',
+    '../fotos/audi-logo.jpg',
+    '../fotos/subaru-logo.jpg',
+    '../fotos/tesla-logo.jpg',
+    '../fotos/maserati-logo.jpg'
+]
 
 
 
@@ -54,6 +65,8 @@ function beginTheLogoQuiz(){
     $(".start_button").click(function(event){
         $("header").remove();
         $(".logo_question").toggle();
+
+        // Matt: answer propmpt doesn't return anything, so this prepend won't do anything :/
         $(".image_and_options").prepend(answerPrompt())
         $(".question_counter").html(STORE.currentQuestion + 1 + " / " + STORE.questions.length)
         $(".score_counter").html(STORE.totalScore + " / " + STORE.questions.length)
@@ -62,10 +75,10 @@ function beginTheLogoQuiz(){
 }
 
 function answerPrompt(){
-    $(".image").append(
+    $(".image").replaceWith(
         `<img class="current_logo" src="${logo[STORE.currentQuestion]}">`
     )
-    $(".question_options").append(
+    $(".question_options").replaceWith(
         `<div class="button_container">
             <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[0]}">${STORE.questions[STORE.currentQuestion].options[0]}<br>
             <input type=radio id="button_option" name=test1 required unchecked value="${STORE.questions[STORE.currentQuestion].options[1]}">${STORE.questions[STORE.currentQuestion].options[1]}<br>
@@ -75,7 +88,7 @@ function answerPrompt(){
         <div>
             <button class="submit_answer">Submit!</button>
         </div>`
-    ); 
+    );
     $(".submit_answer").submit(submitAnswer(), event.preventDefault())
 }
 function submitAnswer(){
@@ -105,7 +118,7 @@ function submitAnswer(){
 }
 
 function theNextButton(){
-    /* when this button is hit, the next question will appear. Specifically, the title will stay the same, but the 
+    /* when this button is hit, the next question will appear. Specifically, the title will stay the same, but the
     logo as well as the four possible questions will update. The "next" button will dissapear again until the next
     answer is selected */
     console.log("`theNextButton` has executed")
@@ -131,14 +144,15 @@ function loadNextQuestion(){
 }
 
 function showMyResults(){
-    /* at the end of the 12th question, the page will update and show one of 4 pages based on the score. 
+    /* at the end of the 12th question, the page will update and show one of 4 pages based on the score.
     A score of between 0 and 3 will show the messed-up car. A score of between a 4 and a 7 will show an old
-    minivan. A score of between 8-11 will show a nice gray car. A score of 12 will show the 
+    minivan. A score of between 8-11 will show a nice gray car. A score of 12 will show the
     red sports car. There will also appear a personalized message as well as a button to restart the quiz*/
     $(".final_question").click(function(event){
+        event.preventDefault();
         $(".image_and_options").hide();
-        $(".logo_question").replaceWith(
-            `<h2>You got ${STORE.totalScore} / ${STORE.questions.length} car logos!`)
+        // $(".logo_question").replaceWith(
+        //     `<h2>You got ${STORE.totalScore} / ${STORE.questions.length} car logos!`)
         if (STORE.totalScore == STORE.questions.length){
             $(".results").append(
                 `<div>
@@ -147,7 +161,7 @@ function showMyResults(){
                 <div>
                     <p>Incredible! You knew every logo! Outstanding job!</p>
                 </div>
-                
+
                 <button class="reset">Click to take another lap!</button>`
             )
         } else if (STORE.totalScore >= 8){
@@ -158,7 +172,7 @@ function showMyResults(){
                 <div>
                     <p>Pretty good, pretty good. Not perfect but still pretty good</p>
                 </div>
-                
+
                 <button class="reset">Click to take another lap!</button>`
             )
         } else if (STORE.totalScore >=4){
@@ -169,10 +183,11 @@ function showMyResults(){
                 <div>
                     <p>That was....mehhh. You're fine....not great, just....fine</p>
                 </div>
-                
+
                 <button class="reset">Click to take another lap!</button>`
             )
         } else {
+            debugger;
             $(".results").append(
             `<div>
                     <img src="../fotos/clunker.jpg">
@@ -180,7 +195,7 @@ function showMyResults(){
                 <div>
                     <p>That was awful! You should study up on your car logos</p>
                 </div>
-                
+
                 <button class="reset">Click to take another lap!</button>`
             )
         }
@@ -189,19 +204,19 @@ function showMyResults(){
 }
 
 function retryQuiz(){
-    /* this button will be at the bottom of all of the final scores, and it will reshow the home page and will 
+    /* this button will be at the bottom of all of the final scores, and it will reshow the home page and will
     restart the score at zero. It will allow the user to flip through the quiz all over again */
     console.log("`retryQuiz` has executed")
     $(".reset").click(function(event){
-        //alert("peter these are parachuetes")
         STORE.currentQuestion = 0
         STORE.totalScore = 0
         $(".results").hide();
         $(".question_counter").html(STORE.currentQuestion + 1 + " / " + STORE.questions.length)
         $(".score_counter").html(STORE.totalScore + " / " + STORE.questions.length)
         $(".logo_question").replaceWith(`<h2>Which logo is this?</h2>`)
-        $(".image_and_options").prepend(answerPrompt())
-
+        $("header").hide();
+        $(".logo_question").toggle();
+        $(".image_and_options").show();
     })
 }
 
